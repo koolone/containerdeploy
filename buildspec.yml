@@ -9,4 +9,4 @@ phases:
       - echo "Build Done"
 artifacts:
   files:
-    - templates/*
+    - templates/SM.yml
