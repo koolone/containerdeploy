@@ -3,10 +3,11 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo "Pre-build Done"
+      - echo "Pre_build Done"
   build:
     commands:
       - echo "Build Done"
+      
 artifacts:
   files:
     - templates/SM.yml
