@@ -9,6 +9,7 @@ Resources:
   Endpoint:
     Type: "AWS::SageMaker::Endpoint"
     Properties:
+      EndpointName: "demo-ml"
       EndpointConfigName:
         !GetAtt EndpointConfig.EndpointConfigName
   EndpointConfig:
