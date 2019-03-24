@@ -1,10 +1,15 @@
 Description: "Basic Hosting entities test.  We need models to create endpoint configs."
+Parameters:
+  DeployImageTag:
+    Type: String
+    Description: Docker Image Application Tag
+    Default: latest
 Mappings:
   RegionMap:
     "us-west-2":
-      "NullTransformer": "328981655083.dkr.ecr.us-west-2.amazonaws.com/demo-ml-registry:latest"
+      "NullTransformer": !Sub "328981655083.dkr.ecr.us-west-2.amazonaws.com/demo-ml-registry:${DeployImageTag}"
     "us-east-1":
-      "NullTransformer": "328981655083.dkr.ecr.us-east-1.amazonaws.com/demo-ml-registry:latest"
+      "NullTransformer": !Sub "328981655083.dkr.ecr.us-east-1.amazonaws.com/demo-ml-registry:${DeployImageTag}"
 Resources:
   Endpoint:
     Type: "AWS::SageMaker::Endpoint"
@@ -25,7 +30,8 @@ Resources:
     Type: "AWS::SageMaker::Model"
     Properties:
       PrimaryContainer:
-        Image: !FindInMap [RegionMap, !Ref "AWS::Region", "NullTransformer"]
+        Image: 
+          Fn::Sub: 328981655083.dkr.ecr.${AWS::Region}.amazonaws.com/demo-ml-registry:${DeployImageTag}
       ExecutionRoleArn: !GetAtt ExecutionRole.Arn
       
   ExecutionRole:
