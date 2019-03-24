@@ -4,12 +4,7 @@ Parameters:
     Type: String
     Description: Docker Image Application Tag
     Default: latest
-Mappings:
-  RegionMap:
-    "us-west-2":
-      "NullTransformer": !Sub "328981655083.dkr.ecr.us-west-2.amazonaws.com/demo-ml-registry:${DeployImageTag}"
-    "us-east-1":
-      "NullTransformer": !Sub "328981655083.dkr.ecr.us-east-1.amazonaws.com/demo-ml-registry:${DeployImageTag}"
+
 Resources:
   Endpoint:
     Type: "AWS::SageMaker::Endpoint"
